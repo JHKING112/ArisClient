@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/JHKING000/ArisClient/main/ArisMainScript.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/JHKING112/ArisClient/main/ArisMainScript.lua", true))()
