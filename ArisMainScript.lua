@@ -59,35 +59,36 @@ for i,v in pairs(game:HttpGet("https://github.com/JHKING112/ArisClient"):split("
 	end
 end
 if commit then
-	if isfolder("Aris") then 
-		if ((not isfile("Aris/commithash.txt")) or (readfile("Aris/commithash.txt") ~= commit or commit == "main")) then
-			for i,v in pairs({"Aris/Universal.lua", "Aris/MainScript.lua", "Aris/GuiLibrary.lua"}) do 
+	if isfolder("aris") then 
+		if ((not isfile("aris/commithash.txt")) or (readfile("aris/commithash.txt") ~= commit or commit == "main")) then
+			for i,v in pairs({"aris/Universal.lua", "aris/MainScript.lua", "aris/GuiLibrary.lua"}) do 
 				if isfile(v) and readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
 					delfile(v)
 				end 
 			end
-			if isfolder("Aris/CustomModules") then 
-				for i,v in pairs(listfiles("Aris/CustomModules")) do 
+			if isfolder("aris/CustomModules") then 
+				for i,v in pairs(listfiles("aris/CustomModules")) do 
 					if isfile(v) and readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
 						delfile(v)
 					end 
 				end
 			end
-			if isfolder("Aris/Libraries") then 
-				for i,v in pairs(listfiles("Aris/Libraries")) do 
+			if isfolder("aris/Libraries") then 
+				for i,v in pairs(listfiles("aris/Libraries")) do 
 					if isfile(v) and readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
 						delfile(v)
 					end 
 				end
 			end
-			writefile("Aris/commithash.txt", commit)
+			writefile("aris/commithash.txt", commit)
 		end
 	else
-		makefolder("Aris")
-		writefile("Aris/commithash.txt", commit)
+		makefolder("aris")
+		writefile("aris/commithash.txt", commit)
 	end
 else
 	displayErrorPopup("Failed to connect to github, please try using a VPN.")
 	error("Failed to connect to github, please try using a VPN.")
 end
 
+return loadstring(arisGithubRequest("MainScript.lua"))()
