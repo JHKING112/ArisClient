@@ -59,7 +59,7 @@ for i,v in pairs(game:HttpGet("https://github.com/JHKING112/ArisClient"):split("
 end
 if commit then
 	if isfolder("aris") then 
-		if ((not isfile("aris/commithash.txt")) or (readfile("vape/commithash.txt") ~= commit or commit == "main")) then
+		if ((not isfile("aris/commithash.txt")) or (readfile("aris/commithash.txt") ~= commit or commit == "main")) then
 			for i,v in pairs({"aris/Universal.lua", "aris/MainScript.lua", "aris/GuiLibrary.lua"}) do 
 				if isfile(v) and readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
 					delfile(v)
