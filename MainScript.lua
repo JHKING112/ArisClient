@@ -26,11 +26,47 @@ if inputService:GetPlatform() ~= Enum.Platform.Windows then
 	getgenv().getsynasset = nil
 	getgenv().getcustomasset = nil
 end
--- end line
+--
+
 local getcustomasset = getsynasset or getcustomasset or function(location) return arisAssetTable[location] or "" end
 local customassetcheck = (getsynasset or getcustomasset) and true
 local queueonteleport = syn and syn.queue_on_teleport or queue_on_teleport or function() end
 local delfile = delfile or function(file) writefile(file, "") end
+local function displayErrorPopup(text, funclist)
+	local oldidentity = getidentity()
+	setidentity(8)
+	local ErrorPrompt = getrenv().require(game:GetService("CoreGui").RobloxGui.Modules.ErrorPrompt)
+	local prompt = ErrorPrompt.new("Default")
+	prompt._hideErrorCode = true
+	local gui = Instance.new("ScreenGui", game:GetService("CoreGui"))
+	prompt:setErrorTitle("Aris")
+	local funcs
+	if funclist then 
+		funcs = {}
+		local num = 0
+		for i,v in pairs(funclist) do 
+			num = num + 1
+			table.insert(funcs, {
+				Text = i,
+				Callback = function() 
+					prompt:_close() 
+					v()
+				end,
+				Primary = num == #funclist
+			})
+		end
+	end
+	prompt:updateButtons(funcs or {{
+		Text = "OK",
+		Callback = function() 
+			prompt:_close() 
+		end,
+		Primary = true
+	}}, 'Default')
+	prompt:setParent(gui)
+	prompt:_open(text)
+	setidentity(oldidentity)
+end
 
 local function arisGithubRequest(scripturl)
 	if not isfile("aris/"..scripturl) then
@@ -51,6 +87,7 @@ local function arisGithubRequest(scripturl)
 	end
 	return readfile("aris/"..scripturl)
 end
+
 -- 미완성
 local function downloadArisAsset(path)
 	if customassetcheck then
@@ -79,9 +116,9 @@ local function downloadArisAsset(path)
 	end
 	return getcustomasset(path) 
 end
-
-assert(not shared.VapeExecuted, "Vape Already Injected")
-shared.VapeExecuted = true
+--
+assert(not shared.ArisExecuted, "Aris Already Injected")
+shared.ArisExecuted = true
 
 for i,v in pairs({baseDirectory:gsub("/", ""), "aris", "aris/Libraries", "aris/CustomModules", "aris/Profiles", baseDirectory.."Profiles", "aris/assets"}) do 
 	if not isfolder(v) then makefolder(v) end
@@ -100,4 +137,64 @@ task.spawn(function()
 		end
 		writefile("aris/assetsversion.txt", assetver)
 	end
+end)
+task.spawn(function()
+	local success, assetver = pcall(function() return arisGithubRequest("assetsversion.txt") end)
+	if not isfile("aris/assetsversion.txt") then writefile("aris/assetsversion.txt", "0") end
+	if success and assetver > readfile("aris/assetsversion.txt") then
+		redownloadedAssets = true
+		if isfolder("aris/assets") and not shared.ArisDeveloper then
+			if delfolder then
+				delfolder("aris/assets")
+				makefolder("aris/assets")
+			end
+		end
+		writefile("aris/assetsversion.txt", assetver)
+	end
+end)
+if not isfile("aris/CustomModules/cachechecked.txt") then
+	local isNotCached = false
+	for i,v in pairs({"aris/Universal.lua", "aris/MainScript.lua", "aris/GuiLibrary.lua"}) do 
+		if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
+			isNotCached = true
+		end 
+	end
+	if isfolder("aris/CustomModules") then 
+		for i,v in pairs(listfiles("aris/CustomModules")) do 
+			if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
+				isNotCached = true
+			end 
+		end
+	end
+	if isNotCached and not shared.ArisDeveloper then
+		displayErrorPopup("Aris has detected uncached files, If you have CustomModules click no, else click yes.", {No = function() end, Yes = function()
+			for i,v in pairs({"aris/Universal.lua", "aris/MainScript.lua", "aris/GuiLibrary.lua"}) do 
+				if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
+					delfile(v)
+				end 
+			end
+			for i,v in pairs(listfiles("aris/CustomModules")) do 
+				if isfile(v) and not readfile(v):find("--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.") then
+					local last = v:split('\\')
+					last = last[#last]
+					local suc, publicrepo = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/JHKING112/ArisClient/"..readfile("aris/commithash.txt").."/CustomModules/"..last) end)
+					if suc and publicrepo and publicrepo ~= "404: Not Found" then
+						writefile("aris/CustomModules/"..last, "--This watermark is used to delete the file if its cached, remove it to make the file persist after commits.\n"..publicrepo)
+					end
+				end 
+			end
+		end})
+	end
+	writefile("aris/CustomModules/cachechecked.txt", "verified")
+end
+
+GuiLibrary = loadstring(arisGithubRequest("GuiLibrary.lua"))()
+shared.GuiLibrary = GuiLibrary
+
+local saveSettingsLoop = coroutine.create(function()
+	if inputService.TouchEnabled then return end
+	repeat
+		GuiLibrary.SaveSettings()
+        task.wait(10)
+	until not arisInjected or not GuiLibrary
 end)
