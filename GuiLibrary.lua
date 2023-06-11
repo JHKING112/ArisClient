@@ -172,7 +172,7 @@ if shared.ArisExecuted then
 					repeat task.wait() until isfile(path)
 					textlabel:Destroy()
 				end)
-				local suc, req = pcall(function() return ArisGithubRequest(path:gsub("Aris/assets", "assets")) end)
+				local suc, req = pcall(function() return arisGithubRequest(path:gsub("aris/assets", "assets")) end)
 				if suc and req then
 					writefile(path, req)
 				else
@@ -187,5 +187,5 @@ if shared.ArisExecuted then
 	GuiLibrary["UpdateHudEvent"] = Instance.new("BindableEvent")
 	GuiLibrary["SelfDestructEvent"] = Instance.new("BindableEvent")
 	GuiLibrary["LoadSettingsEvent"] = Instance.new("BindableEvent")
+	downloadArisAsset("aris/assets/Aris_Icon.png")
 end
-downloadArisAsset("aris/assets/Aris_Icon.png")
