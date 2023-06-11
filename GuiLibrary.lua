@@ -180,4 +180,5 @@ if shared.ArisExecuted then
 	GuiLibrary["UpdateHudEvent"] = Instance.new("BindableEvent")
 	GuiLibrary["SelfDestructEvent"] = Instance.new("BindableEvent")
 	GuiLibrary["LoadSettingsEvent"] = Instance.new("BindableEvent")
+end
 downloadArisAsset("aris/assets/Aris_Icon.png")
