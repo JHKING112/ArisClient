@@ -111,3 +111,4 @@ if shared.ArisExecuted then
 	GuiLibrary["UpdateHudEvent"] = Instance.new("BindableEvent")
 	GuiLibrary["SelfDestructEvent"] = Instance.new("BindableEvent")
 	GuiLibrary["LoadSettingsEvent"] = Instance.new("BindableEvent")
+downloadArisAsset("aris/assets/exit_icon.png")
