@@ -208,5 +208,5 @@ if shared.ArisExecuted then
 	Main.Position = UDim2.new(0.111033, 0, 0.13892366, 0)
 	Main.Size = UDim2.new(0, 999, 0, 594)
 	Main.Parent = clickgui
-	
+end
 	
