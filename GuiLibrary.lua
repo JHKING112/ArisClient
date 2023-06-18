@@ -262,5 +262,52 @@ if shared.ArisExecuted then
 	local scroll_UICorner = Instance.new("UICorner")
 	scroll_UICorner.Parent = scroll
 
+
+
+
+
+
+
+	
+	local function dragGUI(gui, mod)
+		task.spawn(function()
+			local dragging
+			local dragInput
+			local dragStart = Vector3.new(0,0,0)
+			local startPos
+			local function update(input)
+				local delta = input.Position - dragStart
+				local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + (delta.X * (1 / GuiLibrary.MainRescale.Scale)), startPos.Y.Scale, startPos.Y.Offset + (delta.Y * (1 / GuiLibrary.MainRescale.Scale)))
+				tweenService:Create(gui, TweenInfo.new(.20), {Position = Position}):Play()
+			end
+			gui.InputBegan:Connect(function(input)
+				if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and (not mod or LegitModulesFrame.Visible) then
+					dragStart = input.Position
+					local delta = (dragStart - Vector3.new(gui.AbsolutePosition.X, gui.AbsolutePosition.Y, 0)) * (1 / GuiLibrary.MainRescale.Scale)
+					if delta.Y <= 40 then
+						dragging = mod and LegitModulesFrame.Visible or clickgui.Visible
+						startPos = gui.Position
+						
+						input.Changed:Connect(function()
+							if input.UserInputState == Enum.UserInputState.End then
+								dragging = false
+							end
+						end)
+					end
+				end
+			end)
+			gui.InputChanged:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+					dragInput = input
+				end
+			end)
+			inputService.InputChanged:Connect(function(input)
+				if input == dragInput and dragging then
+					update(input)
+				end
+			end)
+		end)
+	end
+
 end
 	
