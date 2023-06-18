@@ -197,7 +197,7 @@ if shared.ArisExecuted then
 	clickgui.BackgroundTransparency = 1
 	clickgui.BorderSizePixel = 0
 	clickgui.BackgroundColor3 = Color3.fromRGB(79, 83, 166)
-	clickgui.Visible = false
+	clickgui.Visible = true
 	clickgui.Parent = scaledgui
 	local Main = Instance.new("Frame")
 	Main.Name = "Main"
