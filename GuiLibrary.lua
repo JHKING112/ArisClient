@@ -1,5 +1,5 @@
 if shared.ArisExecuted then
-	local VERSION = "4.10"..(shared.ArisPrivate and " PRIVATE" or "").." "..readfile("aris/commithash.txt"):sub(1, 6)
+	local VERSION = "1.0"
 	local baseDirectory = (shared.ArisPrivate and "arisprivate/" or "aris/")
 	local universalRainbowValue = 0
 	local arisAssetTable = {
@@ -212,5 +212,40 @@ if shared.ArisExecuted then
 	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(199, 255, 125)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(146, 255, 191))}
 	UIGradient.Parent = Main
 
+	local ArisLogo = Instance.new("TextLabel")
+	ArisLogo.Name = "ArisLogo"
+	ArisLogo.Parent = Main
+	ArisLogo.AnchorPoint = Vector2.new(0, 1)
+	ArisLogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ArisLogo.BackgroundTransparency = 1.000
+	ArisLogo.Position = UDim2.new(0.0220220219, 0, 0.127946123, 0)
+	ArisLogo.Size = UDim2.new(0, 191, 0, 60)
+	ArisLogo.Font = Enum.Font.SourceSans
+	ArisLogo.Text = "Aris"
+	ArisLogo.TextColor3 = Color3.fromRGB(148, 220, 135)
+	ArisLogo.TextSize = 60.000
+	ArisLogo.TextStrokeColor3 = Color3.fromRGB(20, 49, 32)
+	ArisLogo.TextStrokeTransparency = 0.460
+	ArisLogo.TextTransparency = 0.210
+	ArisLogo.TextWrapped = true
+	ArisLogo.TextXAlignment = Enum.TextXAlignment.Left
+
+	local ArisLogo2 = Instance.new("TextLabel")
+	ArisLogo2.Name = "ArisLogo2"
+	ArisLogo2.Parent = ArisLogo
+	ArisLogo2.AnchorPoint = Vector2.new(0, 1)
+	ArisLogo2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ArisLogo2.BackgroundTransparency = 1.000
+	ArisLogo2.Position = UDim2.new(0.403336376, 0, 0.556565642, 0)
+	ArisLogo2.Size = UDim2.new(0, 51, 0, 50)
+	ArisLogo2.Font = Enum.Font.SourceSans
+	ArisLogo2.Text = VERSION
+	ArisLogo2.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ArisLogo2.TextSize = 30.000
+	ArisLogo2.TextStrokeColor3 = Color3.fromRGB(20, 49, 32)
+	ArisLogo2.TextStrokeTransparency = 0.460
+	ArisLogo2.TextTransparency = 0.210
+	ArisLogo2.TextWrapped = true
+	ArisLogo2.TextXAlignment = Enum.TextXAlignment.Left
 end
 	
