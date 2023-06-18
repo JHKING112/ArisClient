@@ -187,8 +187,6 @@ if shared.ArisExecuted then
 	GuiLibrary["UpdateHudEvent"] = Instance.new("BindableEvent")
 	GuiLibrary["SelfDestructEvent"] = Instance.new("BindableEvent")
 	GuiLibrary["LoadSettingsEvent"] = Instance.new("BindableEvent")
-	downloadArisAsset("aris/assets/Aris_Icon.png")
-	downloadArisAsset("aris/assets/Exit_Icon.png")
 	
 	local scaledgui = Instance.new("Frame")
 	scaledgui.Name = "ScaledGui"
