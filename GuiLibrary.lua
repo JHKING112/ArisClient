@@ -189,4 +189,24 @@ if shared.ArisExecuted then
 	GuiLibrary["LoadSettingsEvent"] = Instance.new("BindableEvent")
 	downloadArisAsset("aris/assets/Aris_Icon.png")
 	downloadArisAsset("aris/assets/Exit_Icon.png")
-end
+	
+	local scaledgui = Instance.new("Frame")
+	scaledgui.Name = "ScaledGui"
+	scaledgui.Size = UDim2.new(1, 0, 1, 0)
+	scaledgui.BackgroundTransparency = 1
+	scaledgui.Parent = GuiLibrary["MainGui"]
+	local clickgui = Instance.new("Frame")
+	clickgui.BackgroundTransparency = 1
+	clickgui.BorderSizePixel = 0
+	clickgui.BackgroundColor3 = Color3.fromRGB(79, 83, 166)
+	clickgui.Visible = false
+	clickgui.Parent = scaledgui
+	local Main = Instance.new("Frame")
+	Main.Name = "Main"
+	Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Main.BackgroundTransparency = 0.100
+	Main.Position = UDim2.new(0.111033, 0, 0.13892366, 0)
+	Main.Size = UDim2.new(0, 999, 0, 594)
+	Main.Parent = clickgui
+	
+	
