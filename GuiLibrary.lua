@@ -247,5 +247,12 @@ if shared.ArisExecuted then
 	ArisLogo2.TextTransparency = 0.210
 	ArisLogo2.TextWrapped = true
 	ArisLogo2.TextXAlignment = Enum.TextXAlignment.Left
+	
+	local scroll = Instance.new("Frame")
+	scroll.Name = "scroll"
+	scroll.Parent = Main
+	scroll.BackgroundColor3 = Color3.fromRGB(202, 255, 193)
+	scroll.Position = UDim2.new(0.18718718, 0, 0, 0)
+	scroll.Size = UDim2.new(0, 812, 0, 594)
 end
 	
