@@ -205,6 +205,7 @@ if shared.ArisExecuted then
 	Main.BackgroundTransparency = 0.100
 	Main.Position = UDim2.new(0.111033, 0, 0.13892366, 0)
 	Main.Size = UDim2.new(0, 999, 0, 594)
+	Main.Draggable = true
 	Main.Parent = clickgui
 
 	local Main_UICorner = Instance.new("UICorner")
@@ -256,7 +257,7 @@ if shared.ArisExecuted then
 	scroll.BackgroundColor3 = Color3.fromRGB(202, 255, 193)
 	scroll.Position = UDim2.new(0.18718718, 0, 0, 0)
 	scroll.Size = UDim2.new(0, 812, 0, 594)
-	
+
 	local scroll_UICorner = Instance.new("UICorner")
 	scroll_UICorner.Parent = scroll
 
