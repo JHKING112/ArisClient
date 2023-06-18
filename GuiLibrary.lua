@@ -206,5 +206,11 @@ if shared.ArisExecuted then
 	Main.Position = UDim2.new(0.111033, 0, 0.13892366, 0)
 	Main.Size = UDim2.new(0, 999, 0, 594)
 	Main.Parent = clickgui
+	local UICorner = Instance.new("UICorner")
+	UICorner.Parent = Main
+	local UIGradient = Instance.new("UIGradient")
+	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(199, 255, 125)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(146, 255, 191))}
+	UIGradient.Parent = Main
+
 end
 	
