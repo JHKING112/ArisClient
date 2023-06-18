@@ -192,7 +192,7 @@ if shared.ArisExecuted then
 	scaledgui.Name = "ScaledGui"
 	scaledgui.Size = UDim2.new(1, 0, 1, 0)
 	scaledgui.BackgroundTransparency = 1
-	scaledgui.Parent = GuiLibrary["MainGui"]
+	scaledgui.Parent = gui
 	local clickgui = Instance.new("Frame")
 	clickgui.BackgroundTransparency = 1
 	clickgui.BorderSizePixel = 0
