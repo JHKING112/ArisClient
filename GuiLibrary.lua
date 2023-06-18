@@ -206,8 +206,10 @@ if shared.ArisExecuted then
 	Main.Position = UDim2.new(0.111033, 0, 0.13892366, 0)
 	Main.Size = UDim2.new(0, 999, 0, 594)
 	Main.Parent = clickgui
-	local UICorner = Instance.new("UICorner")
-	UICorner.Parent = Main
+
+	local Main_UICorner = Instance.new("UICorner")
+	Main_UICorner.Parent = Main
+
 	local UIGradient = Instance.new("UIGradient")
 	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(199, 255, 125)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(146, 255, 191))}
 	UIGradient.Parent = Main
@@ -247,12 +249,16 @@ if shared.ArisExecuted then
 	ArisLogo2.TextTransparency = 0.210
 	ArisLogo2.TextWrapped = true
 	ArisLogo2.TextXAlignment = Enum.TextXAlignment.Left
-	
+
 	local scroll = Instance.new("Frame")
 	scroll.Name = "scroll"
 	scroll.Parent = Main
 	scroll.BackgroundColor3 = Color3.fromRGB(202, 255, 193)
 	scroll.Position = UDim2.new(0.18718718, 0, 0, 0)
 	scroll.Size = UDim2.new(0, 812, 0, 594)
+	
+	local scroll_UICorner = Instance.new("UICorner")
+	scroll_UICorner.Parent = scroll
+
 end
 	
