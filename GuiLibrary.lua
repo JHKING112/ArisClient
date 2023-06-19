@@ -266,7 +266,7 @@ if shared.ArisExecuted then
 
 
 	game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key)
-		if key == "comma" then
+		if key == "Comma" then
 			if clickgui.Visible == false
 				clickgui.Visible = true
 			else
