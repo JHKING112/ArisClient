@@ -263,14 +263,17 @@ if shared.ArisExecuted then
 	scroll_UICorner.Parent = scroll
 
 
-
+	opengui = 1
 
 	game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key)
 		if key == "Comma" then
-			if clickgui.Visible == false
+			if opengui == 1
 				clickgui.Visible = true
-			else
-				clickgui.Visible = false
+				opengui = 2
+			end
+			if opengui == 2
+				clickgui.Visible = true
+				opengui = 1
 			end
 		end
 	   end)
