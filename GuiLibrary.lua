@@ -276,7 +276,7 @@ if shared.ArisExecuted then
 				opengui = 1
 			end
 		end
-	   end)
+	end)
 
 
 	
