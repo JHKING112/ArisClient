@@ -271,6 +271,7 @@ if shared.ArisExecuted then
 				clickgui.Visible = true
 			else
 				clickgui.Visible = false
+			end
 		end
 	   end)
 
