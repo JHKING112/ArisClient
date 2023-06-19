@@ -199,7 +199,7 @@ if shared.ArisExecuted then
 	clickgui.BackgroundColor3 = Color3.fromRGB(79, 83, 166)
 	clickgui.Visible = true
 	clickgui.Draggable = true
-	clickgui.Parent = gui
+	clickgui.Parent = scaledgui
 	local Main = Instance.new("Frame")
 	Main.Name = "Main"
 	Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -207,7 +207,7 @@ if shared.ArisExecuted then
 	Main.Position = UDim2.new(0.111033, -0.1, 0.13892366, 0)
 	Main.Size = UDim2.new(0, 999, 0, 594)
 	Main.Draggable = true
-	Main.Parent = gui
+	Main.Parent = clickgui
 
 	local Main_UICorner = Instance.new("UICorner")
 	Main_UICorner.Parent = Main
