@@ -197,7 +197,7 @@ if shared.ArisExecuted then
 	clickgui.BackgroundTransparency = 1
 	clickgui.BorderSizePixel = 0
 	clickgui.BackgroundColor3 = Color3.fromRGB(79, 83, 166)
-	clickgui.Visible = true
+	clickgui.Visible = false
 	clickgui.Draggable = true
 	clickgui.Parent = gui
 	local Main = Instance.new("Frame")
@@ -265,7 +265,14 @@ if shared.ArisExecuted then
 
 
 
-
+	game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key)
+		if key == "comma" then
+			if clickgui.Visible == false
+				clickgui.Visible = true
+			else
+				clickgui.Visible = false
+		end
+	   end)
 
 
 	
